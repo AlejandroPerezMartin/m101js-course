@@ -1,0 +1,13 @@
+{
+    "name": "m101_week_1",
+    "author": "Alejandro Perez",
+    "version": "1.0.0",
+    "description": "M101JS Course - Week 1",
+    "main": "app.js",
+    "dependencies": {
+        "consolidate": "*",
+        "express": "*",
+        "mongodb": "*",
+        "swig": "*"
+    },
+    }
