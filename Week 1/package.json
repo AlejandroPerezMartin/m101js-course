@@ -1,13 +1,19 @@
 {
-    "name": "m101_week_1",
-    "author": "Alejandro Perez",
-    "version": "1.0.0",
-    "description": "M101JS Course - Week 1",
-    "main": "app.js",
-    "dependencies": {
-        "consolidate": "*",
-        "express": "*",
-        "mongodb": "*",
-        "swig": "*"
-    },
-    }
+  "name": "m101js-course-week-1",
+  "version": "1.0.0",
+  "description": "M101JS MongoDB University Course Week 1",
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlejandroPerezMartin/m101js-course.git"
+  },
+  "author": "Alejandro Perez",
+  "license": "MIT",
+  "homepage": "https://github.com/AlejandroPerezMartin/m101js-course",
+  "devDependencies": {
+    "consolidate": "^0.13.1",
+    "express": "^4.13.3",
+    "mongodb": "~1.3.10",
+    "swig": "^1.4.2"
+  }
+}
