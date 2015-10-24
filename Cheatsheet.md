@@ -11,14 +11,15 @@ db.name.remove({}); // delete collection
 ```javascript
 db.name.find(); // retrieve all documents of collection
 db.name.find({ key : value }); // also works with arrays
-db.name.find({ key : { $in : ['prop1', 'prop2'] } }); // field value equal to one of the specified elements
-db.name.find({ key : { $all : ['prop1', 'prop2'] } }); // array contains the specified elements
+db.name.find({ key : { $in : ['prop1', 'prop2'] } }); // selects the documents where the value of a field equals any value in the specified array
+db.name.find({ key : { $nin : ['prop1', 'prop2'] } }); // opposite to $inserted
+db.name.find({ key : { $all : ['prop1', 'prop2'] } }); // array contains all the specified elements
 db.name.find({ key : value }, { key : true });
 db.name.find({ key : value }).pretty(); // better readability results
 db.name.find({ key : { value : { $gt : 2 } });
 db.name.find({ key : { value : { $lt : "C" } });
 db.name.find({ key : { value : { $gte : 5, $lt : 8 } }); // $gte $gt $lte $lt
-db.name.find({ key : { $exists : true } });
+db.name.find({ key : { $exists : true/false } });
 db.name.find({ key : { $regex : "^pattern" } });
 db.name.find({ 'details.email' : 'a@a.com'});
 db.name.find({ $or : [ { key1 : { $regex : "pattern$" } }, { key2 : { $exists : true } } ] });
@@ -48,6 +49,7 @@ db.name.update( { query }, { $set : { key : value } } ); // update field of docu
 db.name.update( { query }, { $set : { key : value } }, { upsert : true } ); // update field of document, if query doesn't match any document, it's created
 db.name.update( { query }, { $set : { key : value } }, { multi : true } ); // update fields (one or more) matched after query execution
 db.name.update( { query }, { $unset : { key : 1 } } ); // remove field 'key' from document
+db.name.update( { key: { $lt : 10 } }, { $inc : { key : 5 }   }, { multi : true } ); // $inc: increments field's key value by the specified number (accepts negative numbers)
 ````
 
 # Cursors
