@@ -1,4 +1,5 @@
 # Manage database and collections
+
 ```javascript
 db;
 use "dbname";
@@ -8,6 +9,7 @@ db.name.remove({}); // delete collection
 ````
 
 # Finding
+
 ```javascript
 db.name.find(); // retrieve all documents of collection
 db.name.find({ key : value }); // also works with arrays
@@ -37,11 +39,13 @@ db.name.count( { key : 'value' } ); // count number of results after query execu
 ```
 
 # Inserting
+
 ```javascript
 db.name.insert({ name: 'Name', details: { email: 'a@a.com', phone: 1234 } });
 ```
 
 # Update
+
 ```javascript
 db.name.save({ object }); // update existing or insert if not exists
 db.name.update( { query }, { key : 'New value' } ); // update field value and remove rest of fields except 'key'
@@ -53,6 +57,7 @@ db.name.update( { key: { $lt : 10 } }, { $inc : { key : 5 }   }, { multi : true 
 ````
 
 # Cursors
+
 ```javascript
 cursors = db.name.find(); null;
 cursors.hasNext(); # > true/false
@@ -62,6 +67,7 @@ cursors.sort( { name: -1 } );
 ````
 
 # Array field manipulation
+
 ```javascript
 db.arrays.insert( { _id : 0, a : [ 1, 2, 3, 4 ] } );
 db.arrays.update( { _id : 0 }, { $set : { 'a.2' : 5 } } ); # > [1, 2, 5, 4]
@@ -74,6 +80,7 @@ db.arrays.update( { _id : 0 }, { $addToSet : { a : 5 } } ); # adds value to arra
 ````
 
 # Other
+
 ```javascript
 db.name.remove( { key : value } ); // delete all the matched documents
 db.runCommand( { getLastError : 1 } ); // show last error
