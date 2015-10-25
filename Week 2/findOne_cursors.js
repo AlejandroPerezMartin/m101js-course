@@ -5,30 +5,36 @@ MongoClient.connect('mongodb://localhost:27017/course', function (err, db) {
     if (err) throw err;
 
     var query = {
-        'grade': 100
+        'grade': { '$gt' : 60, '$lt' : 85 }
     };
 
-    // findOne
-    db.collection('grades').findOne(query, function(err, doc){
-        if (err) throw err;
+    consol.s;
+    
 
-        console.dir(doc);
-    });
+    // findOne
+    db.collection('grades')
+        .findOne(query, function (err, doc) {
+            if (err) throw err;
+
+            console.dir(doc);
+        });
 
     var projection = {
-        'student' : 1,
-        '_id' : 0
+        'student': 1,
+        '_id': 0
     };
 
     // Field Projection
-    db.collection('grades').find(query, projection).toArray(function(err, docs){
-        if (err) throw err;
+    db.collection('grades')
+        .find(query, projection)
+        .toArray(function (err, docs) {
+            if (err) throw err;
 
-        docs.forEach(function(err, doc){
-            console.dir(doc);
-            console.dir(doc.student + " got a good grade!");
+            docs.forEach(function (doc) {
+                console.dir(doc);
+                console.dir(doc.student + " got a good grade!");
+            });
         });
-    });
 
     // Cursors
     var cursor = db.collection('grades').find(query);

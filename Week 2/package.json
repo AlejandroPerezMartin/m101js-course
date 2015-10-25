@@ -11,6 +11,7 @@
   "license": "MIT",
   "homepage": "https://github.com/AlejandroPerezMartin/m101js-course",
   "devDependencies": {
-    "mongodb": "~1.3.10"
+    "mongodb": "~1.4.34",
+    "request": "~2.65.0"
   }
 }
