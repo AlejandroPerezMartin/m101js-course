@@ -5,23 +5,25 @@ MongoClient.connect('mongodb://localhost:27017/course', function (err, db) {
     if (err) throw err;
 
     var query = {
+            'student': 'Frank',
             'assignment': 'hw1'
         },
         operator = {
-            '$unset': {
-                'date_returned': ''
-            }
+            'student': 'Frank',
+            'assignment': 'hw1',
+            'grade': 100
         },
+        // operator = { '$set' : {'date_returned': new Date(), 'grade': 100 } },
         options = {
-            'multi': true
+            'upsert': true
         };
 
     db.collection('grades')
-        .update(query, operator, options, function (err, updated) {
+        .update(query, operator, options, function (err, upserted) {
 
             if (err) throw err;
 
-            console.dir('Successfully updated ' + updated + ' document');
+            console.dir('Successfully upserted ' + upserted + ' document');
 
             db.close();
         });
