@@ -1,8 +1,8 @@
 {
   "name": "m101js-course-week-2",
   "version": "1.0.0",
-  "description": "M101JS MongoDB University Course Week 2 - Lesson examples",
-  "main": "insert.js",
+  "description": "M101JS MongoDB University Course Week 2 - Homework 2.2",
+  "main": "answer.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/AlejandroPerezMartin/m101js-course.git"
@@ -11,7 +11,6 @@
   "license": "MIT",
   "homepage": "https://github.com/AlejandroPerezMartin/m101js-course",
   "devDependencies": {
-    "mongodb": "~1.4.34",
-    "request": "~2.65.0"
+    "mongodb": "~1.4.34"
   }
 }
