@@ -1,7 +1,7 @@
 {
-  "name": "m101js-course-week-2",
+  "name": "m101js-course-week-3",
   "version": "1.0.0",
-  "description": "M101JS MongoDB University Course Week 2 - Homework 2.2",
+  "description": "M101JS MongoDB University Course Week 2 - Homework 3.1",
   "main": "answer.js",
   "repository": {
     "type": "git",
