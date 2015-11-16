@@ -94,12 +94,28 @@ db.collection.dropIndex( { key : 1 } ); // provide same as created index
 # Aggregation
 
 ```javascript
-// group results by $key, create a field "result_field" on each resulting group with adding 1 to each match
+// Simple Aggregation
+// group results by $key, create a field "result_field" on each resulting group and does the specified operation
 db.collection.aggregate([
     {
         $group: {
             _id: "$key",
-            result_field: { $sum: 1 } // sum of all elements
+            result_field: { $sum: "$key" } // $sum, $avg, $addToSet, $push, $max, $min, $first, $last
+        }
+]);
+
+// Double Aggregation
+db.collection.aggregate([
+    {
+        $group: {
+            _id: "$key",
+            result_field: { $sum: "$key" }
+        }
+    },
+    {
+        $group: {
+            _id : "$key._id",
+            another_field: { $max: "$key" }
         }
     }
 ]);
