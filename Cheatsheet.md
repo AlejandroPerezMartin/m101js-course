@@ -107,18 +107,51 @@ db.collection.aggregate([
 // Double Aggregation
 db.collection.aggregate([
     {
-        $group: {
-            _id: "$key",
-            result_field: { $sum: "$key" }
+        $group : {
+            _id : "$key",
+            result_field : { $sum: "$key" }
         }
     },
     {
         $group: {
             _id : "$key._id",
-            another_field: { $max: "$key" }
+            another_field : { $max: "$key" }
         }
     }
 ]);
+
+// $project
+db.zips.aggregate([
+    {
+        $project : {
+            _id : 0, // 0, do not show _id
+            result_field : { $toLower : "$key" }, // transform key $toLower, toUpper, etc
+            another_field : 1, // 1, show key
+            _id : "$key", // reshape _id
+        }
+    }
+]);
+
+// $match and $sort
+db.zips.aggregate([
+    {
+        $match : {
+            key : "match"
+        }
+    },
+    {
+        $group : {
+            ...
+        }
+    },
+    {
+        $sort : {
+            "key" : 1,      // 1 ascending, -1 descending
+            "key2" : -1
+        }
+    }
+]);
+
 ```
 
 # Other
