@@ -4,9 +4,10 @@
 db;
 use "dbname";
 show collections;
+db.createCollection(name);
 db.collection.drop(); // delete collection
 db.collection.remove({}); // delete collection
-````
+```
 
 # Finding
 
@@ -54,7 +55,7 @@ db.collection.update( { query }, { $set : { key : value } }, { upsert : true } )
 db.collection.update( { query }, { $set : { key : value } }, { multi : true } ); // update fields (one or more) matched after query execution
 db.collection.update( { query }, { $unset : { key : 1 } } ); // remove field 'key' from document
 db.collection.update( { key: { $lt : 10 } }, { $inc : { key : 5 }   }, { multi : true } ); // $inc: increments field's key value by the specified number (accepts negative numbers)
-````
+```
 
 # Cursors
 
@@ -64,7 +65,7 @@ cursors.hasNext(); # > true/false
 cursors.next();
 cursors.limit(5);
 cursors.sort( { name: -1 } ); // 1: ascending, -1: descending
-````
+```
 
 # Array field manipulation
 
@@ -77,9 +78,10 @@ db.arrays.update( { _id : 0 }, { $pop : { a : 1/-1 } } ); # remove first (1) or 
 db.arrays.update( { _id : 0 }, { $pull : { a : 5 } } ); # remove value from 'a' array
 db.arrays.update( { _id : 0 }, { $pullAll : { a : [ 2, 5 ] } } ); # remove all array elements from 'a' array
 db.arrays.update( { _id : 0 }, { $addToSet : { a : 5 } } ); # adds value to array only if not exists, if exists is not inserted
-````
+```
 
 # Indexes
+
 ```javascript
 db.collection.createIndex( { key : 1 } ); // use key as index and order (1: ascending, -1: descending)
 db.collection.createIndex( { key : 1, key2: -1 } ); // use key as index and order (1: ascending, -1: descending)
@@ -87,7 +89,20 @@ db.collection.getIndexes();
 db.collection.dropIndex( { key : 1 } ); // provide same as created index
 
 // Create indexes on arrays
+```
 
+# Aggregation
+
+```javascript
+// group results by $key, create a field "result_field" on each resulting group with adding 1 to each match
+db.collection.aggregate([
+    {
+        $group: {
+            _id: "$key",
+            result_field: { $sum: 1 } // sum of all elements
+        }
+    }
+]);
 ```
 
 # Other
@@ -96,4 +111,4 @@ db.collection.dropIndex( { key : 1 } ); // provide same as created index
 db.collection.remove( { key : value } ); // delete all the matched documents
 db.runCommand( { getLastError : 1 } ); // show last error
 db.collection.explain(true]).[find|update|...]({}); // provides info about the query plan
-````
+```
