@@ -1,4 +1,4 @@
-
+use agg;
 db.zips.aggregate([
     {
         $group: {

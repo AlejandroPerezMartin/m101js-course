@@ -1,4 +1,4 @@
-
+use agg;
 db.posts.aggregate([
     {
         $unwind : "$comments"
