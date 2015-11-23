@@ -161,3 +161,19 @@ db.collection.remove( { key : value } ); // delete all the matched documents
 db.runCommand( { getLastError : 1 } ); // show last error
 db.collection.explain(true]).[find|update|...]({}); // provides info about the query plan
 ```
+
+# Replication
+```javascript
+mongo localhost:30001 // connect to mongo replica set (not only for replicas), also 'mongo --port 30001'
+rs.initiate(); // start replica set
+rs.slaveOk(true); // allows the current connection to allow read operations to run on secondary members
+
+// Check oplog (https://docs.mongodb.org/manual/core/replica-set-oplog/)
+use local;
+db.oplog.rs.find();
+```
+
+# Sharding
+```javascript
+sh.status();
+```
