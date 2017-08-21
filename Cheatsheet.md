@@ -82,6 +82,7 @@ cursors.sort( { name: -1 } ); // 1: ascending, -1: descending
 
 ```javascript
 db.arrays.insert( { _id : 0, a : [ 1, 2, 3, 4 ] } );
+db.arrays.updateOne( { _id : 0 }, { $set : { 'a.2' : 5 } } ); // > [1, 2, 5, 4]
 db.arrays.update( { _id : 0 }, { $set : { 'a.2' : 5 } } ); // > [1, 2, 5, 4]
 db.arrays.update( { _id : 0 }, { $push : { a : 6 } } ); // adds element to 'a' array
 db.arrays.update( { _id : 0 }, { $pushAll : { a : [ 6, 7, 8 ] } } ); // adds all elements of the array to 'a' array
