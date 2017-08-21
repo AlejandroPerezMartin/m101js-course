@@ -53,6 +53,7 @@ db.collection.count( { key : 'value' } ); // count number of results after query
 # Inserting
 
 ```javascript
+db.collection.insertOne({ name: 'Name', details: { email: 'a@a.com', phone: 1234 } });
 db.collection.insert({ name: 'Name', details: { email: 'a@a.com', phone: 1234 } });
 ```
 
