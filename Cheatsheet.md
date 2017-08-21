@@ -67,6 +67,7 @@ db.collection.update( { query }, { $set : { key : value } }, { upsert : true } )
 db.collection.update( { query }, { $set : { key : value } }, { multi : true } ); // update fields (one or more) matched after query execution
 db.collection.update( { query }, { $unset : { key : 1 } } ); // remove field 'key' from document
 db.collection.update( { key: { $lt : 10 } }, { $inc : { key : 5 }   }, { multi : true } ); // $inc: increments field's key value by the specified number (accepts negative numbers)
+db.collection.updateMany( { query }, { $unset : { key: "" } } );
 ```
 
 # Cursors
