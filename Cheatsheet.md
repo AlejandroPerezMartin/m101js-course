@@ -14,6 +14,8 @@ db.collection.remove({}); // delete collection
 ```javascript
 db.collection.find(); // retrieve all documents of collection
 db.collection.find({ key : value }); // also works with arrays
+
+// Element operators
 db.collection.find({ key : { $in : ['prop1', 'prop2'] } }); // selects the documents where the value of a field equals any value in the specified array
 db.collection.find({ key : { $nin : ['prop1', 'prop2'] } }); // opposite to $inserted
 db.collection.find({ key : { $all : ['prop1', 'prop2'] } }); // array contains all the specified elements
@@ -23,11 +25,20 @@ db.collection.find({ key : { value : { $gt : 2 } });
 db.collection.find({ key : { value : { $lt : "C" } });
 db.collection.find({ key : { value : { $gte : 5, $lt : 8 } }); // $gte $gt $lte $lt
 db.collection.find({ key : { $exists : true/false } });
+
+// Regex operators
 db.collection.find({ key : { $regex : "^pattern" } });
 db.collection.find({ 'details.email' : 'a@a.com'});
+
+// Logical operators
 db.collection.find({ $or : [ { key1 : { $regex : "pattern$" } }, { key2 : { $exists : true } } ] });
 db.collection.find({ $and : [ { key1 : { $regex : "pattern$" } }, { key2 : { $exists : true } } ] });
 db.collection.find({ key : { $type : 2 } }); // All $type codes: http://docs.mongodb.org/manual/reference/bson-types/
+
+// Array operators
+db.collection.find({ key : { $all : ["a", "b"] } }); // matches arrays that contains all elements of the query
+db.collection.find({ key : { $size : 6 } });
+db.collection.find({ key : { $elemMatch : { prop1: "criteria", prop2: { $gt: 2 }  } } }); // selects documents if element in the array field matches all the $elemMatch conditions
 
 db.collection.findOne(); // get random document from collection
 db.collection.findOne({ key : value });
