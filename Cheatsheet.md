@@ -72,7 +72,7 @@ db.collection.update( { key: { $lt : 10 } }, { $inc : { key : 5 }   }, { multi :
 
 ```javascript
 cursors = db.collection.find(); null;
-cursors.hasNext(); # > true/false
+cursors.hasNext(); // > true/false
 cursors.next();
 cursors.limit(5);
 cursors.sort( { name: -1 } ); // 1: ascending, -1: descending
@@ -82,13 +82,13 @@ cursors.sort( { name: -1 } ); // 1: ascending, -1: descending
 
 ```javascript
 db.arrays.insert( { _id : 0, a : [ 1, 2, 3, 4 ] } );
-db.arrays.update( { _id : 0 }, { $set : { 'a.2' : 5 } } ); # > [1, 2, 5, 4]
-db.arrays.update( { _id : 0 }, { $push : { a : 6 } } ); # adds element to 'a' array
-db.arrays.update( { _id : 0 }, { $pushAll : { a : [ 6, 7, 8 ] } } ); # adds all elements of the array to 'a' array
-db.arrays.update( { _id : 0 }, { $pop : { a : 1/-1 } } ); # remove first (1) or last (-1) element of 'a' array
-db.arrays.update( { _id : 0 }, { $pull : { a : 5 } } ); # remove value from 'a' array
-db.arrays.update( { _id : 0 }, { $pullAll : { a : [ 2, 5 ] } } ); # remove all array elements from 'a' array
-db.arrays.update( { _id : 0 }, { $addToSet : { a : 5 } } ); # adds value to array only if not exists, if exists is not inserted
+db.arrays.update( { _id : 0 }, { $set : { 'a.2' : 5 } } ); // > [1, 2, 5, 4]
+db.arrays.update( { _id : 0 }, { $push : { a : 6 } } ); // adds element to 'a' array
+db.arrays.update( { _id : 0 }, { $pushAll : { a : [ 6, 7, 8 ] } } ); // adds all elements of the array to 'a' array
+db.arrays.update( { _id : 0 }, { $pop : { a : 1/-1 } } ); // remove first (1) or last (-1) element of 'a' array
+db.arrays.update( { _id : 0 }, { $pull : { a : 5 } } ); // remove value from 'a' array
+db.arrays.update( { _id : 0 }, { $pullAll : { a : [ 2, 5 ] } } ); // remove all array elements from 'a' array
+db.arrays.update( { _id : 0 }, { $addToSet : { a : 5 } } ); // adds value to array only if not exists, if exists is not inserted
 ```
 
 # Indexes
@@ -136,7 +136,7 @@ db.zips.aggregate([
     {
         $project : {
             _id : 0, // 0, do not show _id
-            result_field : { $toLower : "$key" }, // transform key $toLower, toUpper, etc
+            result_field : { $toLower : "$key" }, // transform key $toLower, $toUpper, etc
             another_field : 1, // 1, show key
             _id : "$key", // reshape _id
         }
@@ -184,7 +184,8 @@ use local;
 db.oplog.rs.find();
 ```
 
-# Sharding
+
+Sharding
 ```javascript
 sh.status();
 ```
