@@ -103,6 +103,13 @@ db.collection.getIndexes();
 db.collection.dropIndex( { key : 1 } ); // provide same as created index
 
 // Create indexes on arrays
+db.collection.createIndex( { key.subkey : 1 } );
+
+// Partial indexes (create indexes conditionally)
+db.collection.createIndex( { 'key.subkey' : 1 },
+                           {partialFilterExpression: { 'key' : { $exists: true }¡ } }
+);
+
 ```
 
 # Aggregation
