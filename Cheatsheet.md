@@ -105,7 +105,8 @@ db.collection.dropIndex( { key : 1 } ); // provide same as created index
 // Create indexes on arrays
 db.collection.createIndex( { key.subkey : 1 } );
 
-// Partial indexes (create indexes conditionally)
+// Partial indexes (create indexes conditionally).
+// > Find expression should filter by the key specified as condition in order to make an idexed search
 db.collection.createIndex( { 'key.subkey' : 1 },
                            {partialFilterExpression: { 'key' : { $exists: true }¡ } }
 );
