@@ -99,6 +99,7 @@ db.arrays.update( { _id : 0 }, { $addToSet : { a : 5 } } ); // adds value to arr
 ```javascript
 db.collection.createIndex( { key : 1 } ); // use key as index and order (1: ascending, -1: descending)
 db.collection.createIndex( { key : 1, key2: -1 } ); // use key as index and order (1: ascending, -1: descending)
+db.collection.createIndex( {key: 1 }, { unique: true } ); // create unique index
 db.collection.getIndexes();
 db.collection.dropIndex( { key : 1 } ); // provide same as created index
 
